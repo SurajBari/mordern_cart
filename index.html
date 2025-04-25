@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Suraj Cart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dot Cart</title>
   <style>
     :root {
       --primary: #6c5ce7;
@@ -49,10 +49,6 @@
       padding: 20px;
       border-bottom: 1px solid #eee;
       flex-wrap: wrap;
-    }
-
-    .cart-item:last-child {
-      border-bottom: none;
     }
 
     .product-icon {
@@ -147,6 +143,58 @@
         width: 100%;
       }
     }
+
+    /* Toast at bottom center with celebration animation */
+    .toast {
+      position: fixed;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%) translateY(50px);
+      background: #00b894;
+      color: white;
+      padding: 16px 26px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: bold;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 9999;
+      transition: all 0.4s ease;
+    }
+
+    .toast.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+      animation: popIn 0.5s ease, confetti 1s ease-out forwards;
+    }
+
+    /* Bounce in */
+    @keyframes popIn {
+      0% { transform: translateX(-50%) translateY(60px); opacity: 0; }
+      100% { transform: translateX(-50%) translateY(0); opacity: 1; }
+    }
+
+    /* Confetti pop effect (scaled bounce + color burst) */
+    @keyframes confetti {
+      0% {
+        box-shadow:
+          0 0 #fff,
+          -20px -10px #fd79a8,
+          20px -10px #74b9ff,
+          -20px 10px #ffeaa7,
+          20px 10px #55efc4;
+      }
+      100% {
+        box-shadow:
+          0 0 #fff,
+          -80px -80px transparent,
+          80px -80px transparent,
+          -80px 80px transparent,
+          80px 80px transparent;
+      }
+    }
   </style>
 </head>
 <body>
@@ -156,7 +204,6 @@
 
     <div class="cart-item">
       <div class="product-icon">
-        <!-- SVG Headphone Icon -->
         <svg fill="#6c5ce7" viewBox="0 0 24 24">
           <path d="M12 1a10 10 0 0 0-10 10v5a3 3 0 0 0 3 3h1v-8H5a7 7 0 0 1 14 0h-1v8h1a3 3 0 0 0 3-3v-5A10 10 0 0 0 12 1z"/>
         </svg>
@@ -170,7 +217,6 @@
 
     <div class="cart-item">
       <div class="product-icon">
-        <!-- SVG Watch Icon -->
         <svg fill="#fd79a8" viewBox="0 0 24 24">
           <path d="M16 1H8l-1 4H3v2h2.1A7.003 7.003 0 0 0 5 12c0 1.49.47 2.86 1.27 4H3v2h4l1 4h8l1-4h4v-2h-3.27A6.978 6.978 0 0 0 19 12a6.978 6.978 0 0 0-.9-3.4H21V5h-4l-1-4zM9.35 3h5.3l.3 1H9.05l.3-1zM12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12z"/>
         </svg>
@@ -184,7 +230,6 @@
 
     <div class="cart-item">
       <div class="product-icon">
-        <!-- SVG Speaker Icon -->
         <svg fill="#00cec9" viewBox="0 0 24 24">
           <path d="M17.5 12c0-1.77-1.02-3.29-2.5-4.03v8.06A4.993 4.993 0 0 0 17.5 12zM14 4.27V19.7c-3.61-.44-6.5-3.52-6.5-7.2s2.89-6.76 6.5-7.23zM19 12c0 2.21-1.2 4.15-3 5.19v-2.24c1.19-.84 2-2.2 2-3.75s-.81-2.91-2-3.75V6.81c1.8 1.04 3 2.98 3 5.19z"/>
         </svg>
@@ -200,18 +245,30 @@
       Total: $409.96
     </div>
 
-    <button class="btn">🚀 Proceed to Buy</button>
+    <button class="btn" onclick="showToast()">🚀 Proceed to Buy</button>
   </div>
+
+  <div class="toast" id="toast">🎉 Order Placed Successfully!</div>
 
   <div class="footer">
     Made with love by Suraj
-    <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 
-    12.28 2 8.5 2 5.42 4.42 3 7.5 
+    <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 
     3c1.74 0 3.41 0.81 4.5 2.09C13.09 
     3.81 14.76 3 16.5 3 19.58 3 22 
     5.42 22 8.5c0 3.78-3.4 6.86-8.55 
     11.54L12 21.35z"/></svg>
   </div>
+
+  <script>
+    function showToast() {
+      const toast = document.getElementById("toast");
+      toast.classList.add("show");
+
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 3000);
+    }
+  </script>
 
 </body>
 </html>

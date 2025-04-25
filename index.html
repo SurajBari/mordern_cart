@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Suraj Cart</title>
+  <style>
+    :root {
+      --primary: #6c5ce7;
+      --secondary: #fd79a8;
+      --light: #f1f2f6;
+      --dark: #2d3436;
+      --accent: #00cec9;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #74b9ff, #a29bfe);
+      padding: 20px;
+    }
+
+    .cart {
+      max-width: 1100px;
+      margin: auto;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      padding: 30px;
+      animation: fadeIn 0.8s ease;
+    }
+
+    .cart h1 {
+      text-align: center;
+      font-size: 2.4rem;
+      color: var(--primary);
+      margin-bottom: 30px;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 20px;
+      border-bottom: 1px solid #eee;
+      flex-wrap: wrap;
+    }
+
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+
+    .product-icon {
+      width: 60px;
+      height: 60px;
+      background-color: var(--light);
+      padding: 10px;
+      border-radius: 12px;
+    }
+
+    .item-details {
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .item-details h2 {
+      font-size: 1.2rem;
+      color: var(--dark);
+    }
+
+    .item-details p {
+      margin-top: 4px;
+      font-size: 0.95rem;
+      color: #636e72;
+    }
+
+    .item-price {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: var(--secondary);
+    }
+
+    .total {
+      text-align: right;
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: var(--accent);
+      margin-top: 20px;
+    }
+
+    .btn {
+      display: block;
+      margin: 30px auto 10px;
+      padding: 12px 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      background: linear-gradient(to right, #00cec9, #6c5ce7);
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+      text-align: center;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #fff;
+    }
+
+    .footer svg {
+      width: 18px;
+      height: 18px;
+      fill: #e17055;
+      vertical-align: middle;
+      margin-left: 4px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .total {
+        text-align: left;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cart">
+    <h1>🛒 Your Cart</h1>
+
+    <div class="cart-item">
+      <div class="product-icon">
+        <!-- SVG Headphone Icon -->
+        <svg fill="#6c5ce7" viewBox="0 0 24 24">
+          <path d="M12 1a10 10 0 0 0-10 10v5a3 3 0 0 0 3 3h1v-8H5a7 7 0 0 1 14 0h-1v8h1a3 3 0 0 0 3-3v-5A10 10 0 0 0 12 1z"/>
+        </svg>
+      </div>
+      <div class="item-details">
+        <h2>Wireless Headphones</h2>
+        <p>Qty: 1</p>
+        <p class="item-price">$59.99</p>
+      </div>
+    </div>
+
+    <div class="cart-item">
+      <div class="product-icon">
+        <!-- SVG Watch Icon -->
+        <svg fill="#fd79a8" viewBox="0 0 24 24">
+          <path d="M16 1H8l-1 4H3v2h2.1A7.003 7.003 0 0 0 5 12c0 1.49.47 2.86 1.27 4H3v2h4l1 4h8l1-4h4v-2h-3.27A6.978 6.978 0 0 0 19 12a6.978 6.978 0 0 0-.9-3.4H21V5h-4l-1-4zM9.35 3h5.3l.3 1H9.05l.3-1zM12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12z"/>
+        </svg>
+      </div>
+      <div class="item-details">
+        <h2>Smartwatch Tracker</h2>
+        <p>Qty: 2</p>
+        <p class="item-price">$129.99</p>
+      </div>
+    </div>
+
+    <div class="cart-item">
+      <div class="product-icon">
+        <!-- SVG Speaker Icon -->
+        <svg fill="#00cec9" viewBox="0 0 24 24">
+          <path d="M17.5 12c0-1.77-1.02-3.29-2.5-4.03v8.06A4.993 4.993 0 0 0 17.5 12zM14 4.27V19.7c-3.61-.44-6.5-3.52-6.5-7.2s2.89-6.76 6.5-7.23zM19 12c0 2.21-1.2 4.15-3 5.19v-2.24c1.19-.84 2-2.2 2-3.75s-.81-2.91-2-3.75V6.81c1.8 1.04 3 2.98 3 5.19z"/>
+        </svg>
+      </div>
+      <div class="item-details">
+        <h2>Portable Speaker</h2>
+        <p>Qty: 1</p>
+        <p class="item-price">$89.99</p>
+      </div>
+    </div>
+
+    <div class="total">
+      Total: $409.96
+    </div>
+
+    <button class="btn">🚀 Proceed to Buy</button>
+  </div>
+
+  <div class="footer">
+    Made with love by Suraj
+    <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 
+    12.28 2 8.5 2 5.42 4.42 3 7.5 
+    3c1.74 0 3.41 0.81 4.5 2.09C13.09 
+    3.81 14.76 3 16.5 3 19.58 3 22 
+    5.42 22 8.5c0 3.78-3.4 6.86-8.55 
+    11.54L12 21.35z"/></svg>
+  </div>
+
+</body>
+</html>
